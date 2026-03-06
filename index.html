@@ -1,108 +1,433 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
 <head>
-<title>Arik Ben-Shabat</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arik Ben-Shabat</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #5b6472;
+      --accent: #0f172a;
+      --line: #dbe3ee;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+      --max: 1040px;
+    }
 
-<style>
+    * { box-sizing: border-box; }
 
-body{
-font-family: Arial;
-margin:0;
-background:#f5f7fa;
-color:#333;
-}
+    html { scroll-behavior: smooth; }
 
-header{
-background:#0f172a;
-color:white;
-padding:60px 20px;
-text-align:center;
-}
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-header h1{
-font-size:48px;
-margin:0;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-header p{
-font-size:20px;
-margin-top:10px;
-opacity:0.9;
-}
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:40px 20px;
-}
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(246, 248, 251, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
 
-h2{
-border-bottom:2px solid #ddd;
-padding-bottom:10px;
-margin-top:40px;
-}
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      gap: 16px;
+    }
 
-.project{
-background:white;
-padding:20px;
-margin-top:15px;
-border-radius:8px;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
-}
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
 
-footer{
-text-align:center;
-padding:30px;
-background:#0f172a;
-color:white;
-margin-top:40px;
-}
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
 
-</style>
+    .hero {
+      padding: 72px 0 34px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      padding: 48px;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.8rem;
+      opacity: 0.78;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      margin-top: 14px;
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--accent);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: rgba(255,255,255,0.08);
+    }
+
+    section {
+      padding: 22px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.75rem;
+    }
+
+    .section-note {
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .muted { color: var(--muted); }
+
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      background: #eef3f8;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      color: #334155;
+    }
+
+    .project-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      color: #0f172a;
+      white-space: nowrap;
+    }
+
+    ul.clean {
+      padding-left: 18px;
+      margin: 10px 0 0;
+    }
+
+    footer {
+      padding: 42px 0 60px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .hero-card { padding: 34px 24px; }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+  </style>
 </head>
-
 <body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">Arik Ben-Shabat</div>
+      <div class="nav-links">
+        <a href="#about">Om mig</a>
+        <a href="#projects">Projekt</a>
+        <a href="#courses">Kurser</a>
+        <a href="#focus">Fokus</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+    </div>
+  </nav>
 
-<header>
-<h1>Arik Ben-Shabat</h1>
-<p>AI Systems | Automation | Optimization</p>
-</header>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="eyebrow">AI Systems · Automation · Optimization</div>
+        <h1>Jag bygger intelligenta verktyg som gör vardagsarbete smartare.</h1>
+        <p class="subtitle">
+          Jag arbetar med AI-system, schemaläggning, dokumentautomation, språkgranskning och beslutsstöd.
+          Mina projekt ligger ofta i gränslandet mellan forskning, produktivitet och praktiska verktyg för riktiga användare.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">Se projekt</a>
+          <a class="btn btn-secondary" href="#courses">Se kurser</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<div class="container">
+  <main class="wrap">
+    <section id="about">
+      <div class="section-head">
+        <div>
+          <h2>Om mig</h2>
+        </div>
+        <div class="section-note">
+          Jag gillar att ta tekniskt komplexa idéer och göra dem användbara i praktiken.
+        </div>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Vad jag bygger</h3>
+          <p class="muted">AI-assistenter, optimeringslösningar, dokumentflöden och system som hjälper människor fatta bättre beslut snabbare.</p>
+        </article>
+        <article class="card">
+          <h3>Hur jag tänker</h3>
+          <p class="muted">Jag fokuserar på tydliga användningsfall, robust logik, bra gränssnitt och lösningar som faktiskt går att använda i vardagen.</p>
+        </article>
+        <article class="card">
+          <h3>Varför</h3>
+          <p class="muted">Mitt mål är att förbättra de verktyg människor på kontor använder dagligen och skapa mer produktiva arbetsflöden.</p>
+        </article>
+      </div>
+    </section>
 
-<h2>About Me</h2>
+    <section id="projects">
+      <div class="section-head">
+        <div>
+          <h2>Egna projekt</h2>
+        </div>
+        <div class="section-note">
+          Ett urval av projekt som speglar AI, optimering, automatisering och produktivitet.
+        </div>
+      </div>
+      <div class="grid grid-2">
+        <article class="card">
+          <div class="project-title">
+            <h3>QAOA Meeting Scheduler</h3>
+            <span class="pill">Optimization</span>
+          </div>
+          <p class="muted">Ett avancerat mötesschemaläggningssystem med ICS-uppladdning, begränsningar, deltagarvikter och omkörningslogik när ingen giltig tid hittas.</p>
+          <div class="tag-row">
+            <span class="tag">QAOA</span>
+            <span class="tag">Scheduling</span>
+            <span class="tag">Flask</span>
+            <span class="tag">Constraints</span>
+          </div>
+        </article>
 
-<p>
-I build AI systems, automation tools and optimization algorithms.
-Currently working with research and system development.
-</p>
+        <article class="card">
+          <div class="project-title">
+            <h3>Language Compliance RAG</h3>
+            <span class="pill">NLP</span>
+          </div>
+          <p class="muted">Ett lokalt RAG-baserat system för att kontrollera språk, ton, formalitet och formulering mot organisationsgodkända dokument.</p>
+          <div class="tag-row">
+            <span class="tag">RAG</span>
+            <span class="tag">LLM</span>
+            <span class="tag">Compliance</span>
+            <span class="tag">Local AI</span>
+          </div>
+        </article>
 
-<h2>Projects</h2>
+        <article class="card">
+          <div class="project-title">
+            <h3>AI Recruitment Coordinator</h3>
+            <span class="pill">Workflow AI</span>
+          </div>
+          <p class="muted">En AI-koordinator för rekryteringsprocesser med tidslinjeutvinning, dokumentsammanfattning, teamstöd och notifieringar.</p>
+          <div class="tag-row">
+            <span class="tag">Streamlit</span>
+            <span class="tag">Summarization</span>
+            <span class="tag">Automation</span>
+          </div>
+        </article>
 
-<div class="project">
-<b>QAOA Meeting Scheduler</b><br>
-Optimization based scheduling system.
-</div>
+        <article class="card">
+          <div class="project-title">
+            <h3>Semantic Email Assistant</h3>
+            <span class="pill">Search & Clustering</span>
+          </div>
+          <p class="muted">En semantisk e-postassistent för svenska studentmail med klustring, summering och sökbar visualisering.</p>
+          <div class="tag-row">
+            <span class="tag">SBERT</span>
+            <span class="tag">spaCy</span>
+            <span class="tag">TF-IDF</span>
+            <span class="tag">Swedish NLP</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-<div class="project">
-<b>AI Recruitment Coordinator</b><br>
-AI system for managing recruitment workflows.
-</div>
+    <section id="courses">
+      <div class="section-head">
+        <div>
+          <h2>Kurser och ämnesområden</h2>
+        </div>
+        <div class="section-note">
+          Den här delen kan fungera som en samlingssida för det du studerar, bygger och fördjupar dig i.
+        </div>
+      </div>
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Elektrostatik</h3>
+          <p class="muted">Fördjupning i kursinnehåll, struktur utifrån formelblad, begrepp, samband och tentaförberedelser.</p>
+          <ul class="clean muted">
+            <li>Fält och potential</li>
+            <li>Gauss lag</li>
+            <li>Randvillkor och tillämpningar</li>
+          </ul>
+        </article>
 
-<div class="project">
-<b>Language Compliance RAG System</b><br>
-AI system for checking document compliance.
-</div>
+        <article class="card">
+          <h3>Reglerteknik</h3>
+          <p class="muted">Studier inför ERE103 med fokus på förståelse, tidigare tentor, lösningsstrategier och formelblad.</p>
+          <ul class="clean muted">
+            <li>Överföringsfunktioner</li>
+            <li>Stabilitet och återkoppling</li>
+            <li>Exam preparation</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-<h2>Contact</h2>
+    <section id="focus">
+      <div class="section-head">
+        <div>
+          <h2>Fokusområden</h2>
+        </div>
+        <div class="section-note">
+          Några teman som återkommer i mina projekt.</n></div>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>AI för produktivitet</h3>
+          <p class="muted">Verktyg som minskar manuellt arbete och hjälper användare hantera information snabbare.</p>
+        </article>
+        <article class="card">
+          <h3>Optimering</h3>
+          <p class="muted">Beslutsproblem med begränsningar, prioriteringar och flera samtidiga mål.</p>
+        </article>
+        <article class="card">
+          <h3>Dokument och språk</h3>
+          <p class="muted">System för dokumentgenerering, granskning, klassificering och semantisk sökning.</p>
+        </article>
+      </div>
+    </section>
 
-<p>Email: arikb@chalmers.se</p>
+    <section id="contact">
+      <div class="section-head">
+        <div>
+          <h2>Kontakt</h2>
+        </div>
+        <div class="section-note">
+          Lägg gärna till GitHub, LinkedIn och eventuell personlig domän här.
+        </div>
+      </div>
+      <div class="card">
+        <p><strong>E-post:</strong> arikb@chalmers.se</p>
+        <p><strong>GitHub:</strong> github.com/kodenkrypteraren</p>
+        <p><strong>Plats:</strong> Göteborg, Sverige</p>
+      </div>
+    </section>
+  </main>
 
-</div>
-
-<footer>
-© 2026 Arik Ben-Shabat
-</footer>
-
+  <footer>
+    © 2026 Arik Ben-Shabat · Built with GitHub Pages
+  </footer>
 </body>
 </html>
