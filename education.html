@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utbildning | Arik Ben-Shabat</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-2: #121212;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.10);
+      --text: #f3f4f6;
+      --muted: #a1a1aa;
+      --accent: #7dd3fc;
+      --accent-2: #a78bfa;
+      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+
+    body.light {
+      --bg: #e5e7eb;
+      --bg-2: #d1d5db;
+      --surface: rgba(255,255,255,0.55);
+      --border: rgba(15,23,42,0.10);
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0369a1;
+      --accent-2: #7c3aed;
+      --shadow: 0 16px 40px rgba(15,23,42,0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(125,211,252,0.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(167,139,250,0.10), transparent 28%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+    }
+
+    .wrap {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 0;
+      flex-wrap: wrap;
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav a, .theme-toggle {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .theme-toggle { cursor: pointer; }
+
+    main {
+      padding: 40px 0 60px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .degree-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .degree-card h2 {
+      margin: 0 0 8px;
+      font-size: 1.7rem;
+    }
+
+    .degree-meta {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .subsection {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .subsection h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+
+    .thesis {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(125,211,252,0.08);
+      border: 1px solid rgba(125,211,252,0.18);
+      color: var(--text);
+    }
+
+    footer {
+      padding: 30px 0 60px;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <strong>Arik Ben-Shabat</strong>
+      <nav class="nav">
+        <a href="index.html">Hem</a>
+        <a href="projects.html">Projekt</a>
+        <a href="courses.html">Kurser</a>
+        <a href="education.html">Utbildning</a>
+        <a href="about.html">Om mig</a>
+        <button class="theme-toggle" id="themeToggle" type="button">Växla tema</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Utbildning</h1>
+    <p class="lead">
+      En översikt över mina utbildningar och lästa kurser, strukturerade enligt mitt CV:
+      civilingenjör inom datateknik, civilingenjör inom globala system samt masterexamen i datavetenskap.
+    </p>
+
+    <section class="degree-card">
+      <h2>Civilingenjör inom datateknik</h2>
+      <div class="degree-meta">Chalmers tekniska högskola · 210 / 300 hp</div>
+
+      <div class="subsection">
+        <h3>Kandidatexamen inom datateknik (TKDAT) · 180 / 180 hp</h3>
+        <ul>
+          <li>TDA555 Introduction to Functional Programming</li>
+          <li>TMV210 Introduction to Discrete Mathematics</li>
+          <li>EDA452 Introduction to Computer Engineering</li>
+          <li>TMV216 Linear Algebra</li>
+          <li>DAT043 Introductory Course in Programming</li>
+          <li>TMV170 Mathematical Analysis</li>
+          <li>EDA482 Machine Oriented Programming</li>
+          <li>EDA343 Computer Communication</li>
+          <li>MVE055 Mathematical Statistics & Discrete Mathematics</li>
+          <li>DAT290 Computer Science & Engineering Project</li>
+          <li>DAT038 Data Structures & Algorithms</li>
+          <li>TIF085 Physics for Engineers</li>
+          <li>DAT326 Domain Specific Languages of Mathematics</li>
+          <li>DAT341 Applied Machine Learning</li>
+          <li>EDA333 Computer Systems Engineering</li>
+          <li>EEM076 Electric Circuits & Fields</li>
+          <li>SSY081 Transforms, Signals & Systems</li>
+          <li>TDA384 Principles of Concurrent Programming</li>
+          <li>ENM156 Sustainable Development & Ethics in Computer Science</li>
+          <li>EDA322 Digital Design</li>
+          <li>TRA125 Engineering Across Cultures & Nations</li>
+        </ul>
+        <div class="thesis">
+          <strong>Kandidatarbete:</strong> MCCX11 Bachelor Thesis in Microtechnology & Nanoscience:
+          Development of a Process Design Kit for Superconducting Quantum Processors
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Masterexamen inom inbyggda elektroniksystem (MPEES) · 30 / 120 hp</h3>
+        <ul>
+          <li>MCC093 Introduction to Integrated Circuit Design</li>
+          <li>DAT116 Mixed-signal System Design</li>
+          <li>DAT110 Methods for Electronic System Design & Verification</li>
+          <li>DAT096 Embedded System Design Project</li>
+          <li>SSY121 Introduction to Communication Engineering</li>
+          <li>RRY071 Millimeter Wave & THz Technology</li>
+          <li>MKM106 Introduction to Microsystems Packaging</li>
+          <li>SSY130 Applied Signal Processing</li>
+          <li>SSY135 Wireless Communications</li>
+          <li>SSY145 Wireless Networks</li>
+          <li>TRA220 GPU-accelerated Computational Methods Using Python & CUDA</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="degree-card">
+      <h2>Civilingenjör inom globala system</h2>
+      <div class="degree-meta">Chalmers tekniska högskola · 202.5 / 300 hp</div>
+
+      <div class="subsection">
+        <h3>Kandidatexamen inom globala system (TKGBS) · 168 / 180 hp</h3>
+        <ul>
+          <li>SEE070 Introduction to Global Systems Engineering</li>
+          <li>MVE625 Computational Tools</li>
+          <li>SEE085 Linear Algebra & Experimental Mathematics</li>
+          <li>DAT435 Applied Mathematical Thinking</li>
+          <li>SEE065 Order & Disorder in Physical Systems</li>
+          <li>MVE620 Single Variable Calculus</li>
+          <li>DAT500 Mathematical Modeling & Problem Solving</li>
+          <li>SEE060 The Earth System</li>
+          <li>SEE130 Ethical Perspectives in Global Systems Engineering</li>
+          <li>DAT405 Introduction to Data Science & AI</li>
+          <li>TEK915 Society as Systems</li>
+          <li>SEE155 Environmental Measurement Techniques</li>
+          <li>DAT505 Python Programming</li>
+          <li>SEE150 Environmental Economics</li>
+          <li>TEK920 Technical Systems for Energy, Materials & Information</li>
+          <li>MVE650 Statistics & Probability</li>
+          <li>SEE105 Electromagnetic Fields & Waves</li>
+          <li>TEK760 Innovation & Sustainability Transitions</li>
+          <li>MVE655 Multivariable Calculus</li>
+          <li>SEE080 Mechanics</li>
+          <li>SEE110 Climate Modeling</li>
+          <li>TIF395 Quantum Physics</li>
+          <li>MMS230 Emissions From Transportation</li>
+          <li>MVE680 Differential Equations</li>
+          <li>SEE075 Evolution & Self-organization in Biological Systems</li>
+        </ul>
+        <div class="thesis">
+          <strong>Kandidatarbete:</strong> MVEX11 Bachelor Thesis in Mathematics:
+          Photogrammetry - 3D Face Reconstruction
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Masterexamen inom fysik (MPPHS) · 34.5 / 120 hp</h3>
+        <ul>
+          <li>TIF295 Experimental Methods in Modern Physics</li>
+          <li>TIF285 Learning from Data</li>
+          <li>TIF290 Quantum Mechanics</li>
+          <li>FKA121 Computational Physics</li>
+          <li>MCC155 Quantum Computing</li>
+          <li>TIF320 Computational Materials & Molecular Physics</li>
+          <li>MCC185 From Quantum Optics to Quantum Technology</li>
+          <li>RRY041 The Interstellar Medium & Star Formation</li>
+          <li>TIF300 Spectroscopy</li>
+          <li>TRA200 Building & Programming a Quantum Computer</li>
+          <li>MCC121 Microwave Engineering</li>
+          <li>MCC180 Open Quantum Systems</li>
+          <li>EME102 Active Microwave Circuits</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="degree-card">
+      <h2>Masterexamen inom datavetenskap</h2>
+      <div class="degree-meta">Göteborgs universitet · 75 / 120 hp</div>
+
+      <div class="subsection" style="margin-top:0; padding-top:0; border-top:none;">
+        <ul>
+          <li>DIT431 High Performance Parallel Programming</li>
+          <li>DIT051 Computer Architecture</li>
+          <li>DIT224 Computer Graphics</li>
+          <li>DIT240 Distributed Systems</li>
+          <li>DIT728 Design of AI Systems</li>
+          <li>DIT093 Algorithms</li>
+          <li>DIT930 Advanced Databases</li>
+          <li>DIT056 Algorithms, Advanced Course</li>
+          <li>DIT993 Mathematical Modeling & Problem Solving</li>
+          <li>DIT743 Computational Methods in Bioinformatics</li>
+          <li>ML730N Quantum Programming @ Stockholm University</li>
+          <li>DIT199 Computer Scientist in Society</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Arik Ben-Shabat · Built with GitHub Pages
+  </footer>
+
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light');
+    }
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
