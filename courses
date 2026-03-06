@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kurser | Arik Ben-Shabat</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-2: #121212;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.10);
+      --text: #f3f4f6;
+      --muted: #a1a1aa;
+      --accent: #7dd3fc;
+    }
+    body.light {
+      --bg: #e5e7eb;
+      --bg-2: #d1d5db;
+      --surface: rgba(255,255,255,0.55);
+      --border: rgba(15,23,42,0.10);
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0369a1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg), var(--bg-2));
+    }
+    .wrap { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px; padding: 16px 0; flex-wrap: wrap;
+    }
+    .nav { display: flex; gap: 10px; flex-wrap: wrap; }
+    .nav a, .theme-toggle {
+      padding: 10px 14px; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted); text-decoration: none; font-weight: 600;
+    }
+    .theme-toggle { cursor: pointer; }
+    main { padding: 40px 0 60px; }
+    h1 { font-size: 3rem; margin-bottom: 12px; }
+    .lead { color: var(--muted); max-width: 700px; margin-bottom: 28px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+    }
+    p { color: var(--muted); line-height: 1.6; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <strong>Arik Ben-Shabat</strong>
+      <nav class="nav">
+        <a href="index.html">Hem</a>
+        <a href="projects.html">Projekt</a>
+        <a href="courses.html">Kurser</a>
+        <a href="about.html">Om mig</a>
+        <button class="theme-toggle" id="themeToggle" type="button">Växla tema</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Kurser</h1>
+    <p class="lead">Kurser och ämnesområden som speglar din tekniska bredd och det du fördjupar dig i.</p>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Elektrostatik</h2>
+        <p>Fält, potential, Gauss lag, randvillkor och tentaförberedelser.</p>
+      </section>
+      <section class="card">
+        <h2>Reglerteknik</h2>
+        <p>Överföringsfunktioner, stabilitet, återkoppling och exam prep för ERE103.</p>
+      </section>
+      <section class="card">
+        <h2>Matematisk modellering</h2>
+        <p>Begreppsstrukturer, analys och problemlösning i tekniska kursmoment.</p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light');
+    }
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
