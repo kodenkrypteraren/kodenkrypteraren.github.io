@@ -33,6 +33,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, Arial, Helvetica, sans-serif;
@@ -45,8 +46,15 @@
       transition: background 0.25s ease, color 0.25s ease;
     }
 
-    a { color: inherit; text-decoration: none; }
-    .wrap { width: min(1150px, calc(100% - 32px)); margin: 0 auto; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1150px, calc(100% - 32px));
+      margin: 0 auto;
+    }
 
     .topbar {
       position: sticky;
@@ -89,7 +97,8 @@
       align-items: center;
     }
 
-    .nav a, .theme-toggle {
+    .nav a,
+    .theme-toggle {
       padding: 10px 14px;
       border-radius: 999px;
       background: var(--surface);
@@ -99,7 +108,8 @@
       transition: 0.2s ease;
     }
 
-    .nav a:hover, .theme-toggle:hover {
+    .nav a:hover,
+    .theme-toggle:hover {
       color: var(--text);
       transform: translateY(-1px);
     }
@@ -156,6 +166,7 @@
       font-size: 1.08rem;
       max-width: 700px;
       margin: 16px 0 0;
+      line-height: 1.7;
     }
 
     .cta-row {
@@ -225,15 +236,22 @@
       margin: 0 0 18px;
       color: var(--muted);
       max-width: 760px;
+      line-height: 1.7;
     }
 
-    .grid-3, .grid-2 {
+    .grid-3,
+    .grid-2 {
       display: grid;
       gap: 16px;
     }
 
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
     .card {
       padding: 22px;
@@ -268,17 +286,26 @@
     }
 
     @media (max-width: 900px) {
-      .hero-card, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .hero-card,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <div class="brand"><span class="brand-dot"></span><span>Arik Ben-Shabat</span></div>
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span>Arik Ben-Shabat</span>
+      </div>
+
       <nav class="nav">
         <a href="index.html">Hem</a>
         <a href="projects.html">Projekt</a>
+        <a href="education.html">Utbildning</a>
         <a href="courses.html">Kurser</a>
         <a href="about.html">Om mig</a>
         <button class="theme-toggle" id="themeToggle" type="button">Växla tema</button>
@@ -294,23 +321,29 @@
           <h1><span class="gradient">Arik Ben-Shabat</span></h1>
           <p>
             Jag bygger intelligenta system för schemaläggning, dokumentautomation,
-            språkgranskning och produktivitet. Härifrån kan besökaren klicka sig vidare till riktiga undersidor.
+            språkgranskning och produktivitet. Härifrån kan besökaren klicka sig vidare
+            till riktiga undersidor.
           </p>
+
           <div class="cta-row">
             <a class="btn btn-primary" href="projects.html">Öppna projekt</a>
-            <a class="btn btn-secondary" href="courses.html">Öppna kurser</a>
-            <a class="btn btn-secondary" href="about.html">Läs om mig</a>
+            <a class="btn btn-secondary" href="education.html">Utbildning</a>
+            <a class="btn btn-secondary" href="courses.html">Kurser</a>
+            <a class="btn btn-secondary" href="about.html">Om mig</a>
           </div>
         </div>
+
         <div class="info-panel">
           <div class="panel-box">
             <div class="label">Profil</div>
             <strong>Teknisk portfolio med fokus på AI, optimering och verkliga arbetsflöden</strong>
           </div>
+
           <div class="panel-box">
             <div class="label">Design</div>
             <strong>Användaren kan växla mellan mörkt och ljusgrått tema</strong>
           </div>
+
           <div class="panel-box">
             <div class="label">Struktur</div>
             <strong>Riktiga sidor i stället för en enda lång sida</strong>
@@ -321,18 +354,29 @@
 
     <section class="section">
       <h2>Utforska</h2>
-      <p class="lead">Här är tre tydliga ingångar till sidan. Varje kort leder till en egen sida i din portfolio.</p>
-      <div class="grid-3">
+      <p class="lead">
+        Här är fyra tydliga ingångar till sidan. Varje kort leder till en egen sida i din portfolio.
+      </p>
+
+      <div class="grid-2">
         <article class="card">
           <h3>Projekt</h3>
           <p>Dina AI-, optimerings- och automationsprojekt samlade på en egen sida.</p>
           <a class="card-link" href="projects.html">Gå till projekt →</a>
         </article>
+
+        <article class="card">
+          <h3>Utbildning</h3>
+          <p>Hela din akademiska bakgrund med civilingenjörsutbildningar, masterstudier och kurslistor.</p>
+          <a class="card-link" href="education.html">Gå till utbildning →</a>
+        </article>
+
         <article class="card">
           <h3>Kurser</h3>
-          <p>Kurser, ämnesområden och tekniska spår du vill visa upp i en separat vy.</p>
+          <p>En separat vy för kurser, fokusområden eller utvalda ämnen du vill lyfta fram extra.</p>
           <a class="card-link" href="courses.html">Gå till kurser →</a>
         </article>
+
         <article class="card">
           <h3>Om mig</h3>
           <p>En ren introduktionssida om hur du jobbar, vad som driver dig och vad du bygger.</p>
@@ -348,6 +392,7 @@
           <h3>Riktiga GitHub-länkar</h3>
           <p>Varje projektkort kan länka till repo, demo eller dokumentation när du är redo.</p>
         </article>
+
         <article class="card">
           <h3>Fler sidor</h3>
           <p>Vi kan enkelt lägga till CV, kontakt, publikationer eller en sida för research senare.</p>
@@ -368,7 +413,10 @@
 
     document.getElementById('themeToggle').addEventListener('click', () => {
       document.body.classList.toggle('light');
-      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+      localStorage.setItem(
+        'theme',
+        document.body.classList.contains('light') ? 'light' : 'dark'
+      );
     });
   </script>
 </body>
