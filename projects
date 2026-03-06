@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projekt | Arik Ben-Shabat</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-2: #121212;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.10);
+      --text: #f3f4f6;
+      --muted: #a1a1aa;
+      --accent: #7dd3fc;
+      --accent-2: #a78bfa;
+    }
+    body.light {
+      --bg: #e5e7eb;
+      --bg-2: #d1d5db;
+      --surface: rgba(255,255,255,0.55);
+      --border: rgba(15,23,42,0.10);
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0369a1;
+      --accent-2: #7c3aed;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg), var(--bg-2));
+    }
+    .wrap { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px; padding: 16px 0; flex-wrap: wrap;
+    }
+    .nav { display: flex; gap: 10px; flex-wrap: wrap; }
+    .nav a, .theme-toggle {
+      padding: 10px 14px; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted); text-decoration: none; font-weight: 600;
+    }
+    .theme-toggle { cursor: pointer; }
+    main { padding: 40px 0 60px; }
+    h1 { font-size: 3rem; margin-bottom: 12px; }
+    .lead { color: var(--muted); max-width: 700px; margin-bottom: 28px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+    }
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .tag {
+      padding: 7px 10px; border-radius: 999px;
+      background: rgba(125,211,252,0.10);
+      border: 1px solid rgba(125,211,252,0.20);
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+    p { color: var(--muted); line-height: 1.6; }
+    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <strong>Arik Ben-Shabat</strong>
+      <nav class="nav">
+        <a href="index.html">Hem</a>
+        <a href="projects.html">Projekt</a>
+        <a href="courses.html">Kurser</a>
+        <a href="about.html">Om mig</a>
+        <button class="theme-toggle" id="themeToggle" type="button">Växla tema</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Projekt</h1>
+    <p class="lead">Ett urval av projekt inom AI, optimering, språk och produktivitet.</p>
+
+    <div class="grid">
+      <section class="card">
+        <h2>QAOA Meeting Scheduler</h2>
+        <p>Avancerat schemaläggningssystem med ICS-uppladdning, vikter, constraints och omkörningslogik.</p>
+        <div class="tag-row">
+          <span class="tag">QAOA</span>
+          <span class="tag">Scheduling</span>
+          <span class="tag">Flask</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Language Compliance RAG</h2>
+        <p>Lokalt RAG-system för att kontrollera språk, ton och formulering mot godkända organisationsdokument.</p>
+        <div class="tag-row">
+          <span class="tag">RAG</span>
+          <span class="tag">LLM</span>
+          <span class="tag">Compliance</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>AI Recruitment Coordinator</h2>
+        <p>AI-stöd för rekryteringsprocesser med tidslinjer, sammanfattning, dokumentstöd och notifieringar.</p>
+        <div class="tag-row">
+          <span class="tag">Automation</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">Workflow</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Semantic Email Assistant</h2>
+        <p>Semantisk sökning, klustring och summering av svenska studentmail.</p>
+        <div class="tag-row">
+          <span class="tag">SBERT</span>
+          <span class="tag">spaCy</span>
+          <span class="tag">NLP</span>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light');
+    }
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
