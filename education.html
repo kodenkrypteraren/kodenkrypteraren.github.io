@@ -6,168 +6,149 @@
   <title>Utbildning | Arik Ben-Shabat</title>
   <style>
     :root {
-      --bg: #0a0a0a;
-      --bg-2: #121212;
-      --surface: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.10);
-      --text: #f3f4f6;
-      --muted: #a1a1aa;
-      --accent: #7dd3fc;
-      --accent-2: #a78bfa;
-      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #555555;
+      --border: #e0e0e0;
     }
 
-    body.light {
-      --bg: #e5e7eb;
-      --bg-2: #d1d5db;
-      --surface: rgba(255,255,255,0.55);
-      --border: rgba(15,23,42,0.10);
-      --text: #0f172a;
-      --muted: #475569;
-      --accent: #0369a1;
-      --accent-2: #7c3aed;
-      --shadow: 0 16px 40px rgba(15,23,42,0.10);
+    body.dark {
+      --bg: #111111;
+      --text: #f0f0f0;
+      --muted: #999999;
+      --border: #2a2a2a;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(125,211,252,0.10), transparent 28%),
-        radial-gradient(circle at top right, rgba(167,139,250,0.10), transparent 28%),
-        linear-gradient(180deg, var(--bg), var(--bg-2));
+      min-height: 100vh;
+      transition: background 0.2s, color 0.2s;
     }
 
+    a { color: inherit; text-decoration: none; }
+
     .wrap {
-      width: min(1100px, calc(100% - 32px));
+      width: min(680px, calc(100% - 48px));
       margin: 0 auto;
     }
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(12px);
+    header {
       border-bottom: 1px solid var(--border);
+      padding: 20px 0;
     }
 
     .topbar-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      padding: 16px 0;
-      flex-wrap: wrap;
     }
 
-    .nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .brand { font-weight: 600; font-size: 1rem; }
 
-    .nav a, .theme-toggle {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: var(--surface);
+    .theme-toggle {
+      background: none;
       border: 1px solid var(--border);
       color: var(--muted);
-      text-decoration: none;
-      font-weight: 600;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: border-color 0.2s;
     }
 
-    .theme-toggle { cursor: pointer; }
+    .theme-toggle:hover { border-color: var(--text); color: var(--text); }
 
-    main {
-      padding: 40px 0 60px;
-    }
+    main { padding: 64px 0 80px; }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 12px;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
     }
 
     .lead {
       color: var(--muted);
-      max-width: 760px;
-      margin-bottom: 28px;
-      line-height: 1.7;
+      margin-bottom: 56px;
+      font-size: 1rem;
+      line-height: 1.65;
     }
 
-    .degree-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-      margin-bottom: 22px;
+    .degree {
+      margin-bottom: 56px;
     }
 
-    .degree-card h2 {
-      margin: 0 0 8px;
-      font-size: 1.7rem;
+    .degree h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
     }
 
     .degree-meta {
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
     }
 
     .subsection {
-      margin-top: 24px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
+      margin-bottom: 32px;
     }
 
     .subsection h3 {
-      margin: 0 0 12px;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
     }
 
     ul {
-      margin: 0;
-      padding-left: 20px;
+      list-style: none;
+      padding: 0;
     }
 
     li {
       color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 6px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
     }
 
+    li:last-child { border-bottom: none; }
+
     .thesis {
-      margin-top: 14px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(125,211,252,0.08);
-      border: 1px solid rgba(125,211,252,0.18);
-      color: var(--text);
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .thesis strong { color: var(--text); }
+
+    .degree-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 56px;
     }
 
     footer {
-      padding: 30px 0 60px;
+      padding: 40px 0;
       color: var(--muted);
-      text-align: center;
+      font-size: 0.875rem;
+      border-top: 1px solid var(--border);
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
+  <header>
     <div class="wrap topbar-inner">
-      <strong>Arik Ben-Shabat</strong>
-      <nav class="nav">
-        <a href="index.html">Hem</a>
-        <a href="projects.html">Projekt</a>
-        <a href="courses.html">Kurser</a>
-        <a href="education.html">Utbildning</a>
-        <a href="about.html">Om mig</a>
-        <button class="theme-toggle" id="themeToggle" type="button">Växla tema</button>
-      </nav>
+      <a class="brand" href="index.html">Arik Ben-Shabat</a>
+      <button class="theme-toggle" id="themeToggle" type="button">Växla tema</button>
     </div>
   </header>
 
@@ -178,7 +159,7 @@
       civilingenjör inom datateknik, civilingenjör inom globala system samt masterexamen i datavetenskap.
     </p>
 
-    <section class="degree-card">
+    <section class="degree">
       <h2>Civilingenjör inom datateknik</h2>
       <div class="degree-meta">Chalmers tekniska högskola · 210 / 300 hp</div>
 
@@ -207,10 +188,10 @@
           <li>EDA322 Digital Design</li>
           <li>TRA125 Engineering Across Cultures & Nations</li>
         </ul>
-        <div class="thesis">
+        <p class="thesis">
           <strong>Kandidatarbete:</strong> MCCX11 Bachelor Thesis in Microtechnology & Nanoscience:
           Development of a Process Design Kit for Superconducting Quantum Processors
-        </div>
+        </p>
       </div>
 
       <div class="subsection">
@@ -231,7 +212,9 @@
       </div>
     </section>
 
-    <section class="degree-card">
+    <hr class="degree-divider" />
+
+    <section class="degree">
       <h2>Civilingenjör inom globala system</h2>
       <div class="degree-meta">Chalmers tekniska högskola · 202.5 / 300 hp</div>
 
@@ -264,10 +247,10 @@
           <li>MVE680 Differential Equations</li>
           <li>SEE075 Evolution & Self-organization in Biological Systems</li>
         </ul>
-        <div class="thesis">
+        <p class="thesis">
           <strong>Kandidatarbete:</strong> MVEX11 Bachelor Thesis in Mathematics:
           Photogrammetry - 3D Face Reconstruction
-        </div>
+        </p>
       </div>
 
       <div class="subsection">
@@ -290,11 +273,13 @@
       </div>
     </section>
 
-    <section class="degree-card">
+    <hr class="degree-divider" />
+
+    <section class="degree">
       <h2>Masterexamen inom datavetenskap</h2>
       <div class="degree-meta">Göteborgs universitet · 75 / 120 hp</div>
 
-      <div class="subsection" style="margin-top:0; padding-top:0; border-top:none;">
+      <div class="subsection">
         <ul>
           <li>DIT431 High Performance Parallel Programming</li>
           <li>DIT051 Computer Architecture</li>
@@ -314,16 +299,16 @@
   </main>
 
   <footer>
-    © 2026 Arik Ben-Shabat · Built with GitHub Pages
+    <div class="wrap">© 2026 Arik Ben-Shabat</div>
   </footer>
 
   <script>
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
     }
     document.getElementById('themeToggle').addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
     });
   </script>
 </body>

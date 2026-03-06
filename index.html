@@ -6,417 +6,168 @@
   <title>Arik Ben-Shabat</title>
   <style>
     :root {
-      --bg: #0a0a0a;
-      --bg-2: #121212;
-      --surface: rgba(255,255,255,0.04);
-      --surface-strong: rgba(255,255,255,0.07);
-      --border: rgba(255,255,255,0.10);
-      --text: #f3f4f6;
-      --muted: #a1a1aa;
-      --accent: #7dd3fc;
-      --accent-2: #a78bfa;
-      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #555555;
+      --border: #e0e0e0;
     }
 
-    body.light {
-      --bg: #e5e7eb;
-      --bg-2: #d1d5db;
-      --surface: rgba(255,255,255,0.45);
-      --surface-strong: rgba(255,255,255,0.72);
-      --border: rgba(15,23,42,0.10);
-      --text: #0f172a;
-      --muted: #475569;
-      --accent: #0369a1;
-      --accent-2: #7c3aed;
-      --shadow: 0 16px 40px rgba(15,23,42,0.10);
+    body.dark {
+      --bg: #111111;
+      --text: #f0f0f0;
+      --muted: #999999;
+      --border: #2a2a2a;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(125,211,252,0.10), transparent 28%),
-        radial-gradient(circle at top right, rgba(167,139,250,0.10), transparent 28%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       min-height: 100vh;
-      transition: background 0.25s ease, color 0.25s ease;
+      transition: background 0.2s, color 0.2s;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .wrap {
-      width: min(1150px, calc(100% - 32px));
+      width: min(680px, calc(100% - 48px));
       margin: 0 auto;
     }
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: color-mix(in srgb, var(--bg) 72%, transparent);
+    /* ── Top bar ── */
+    header {
       border-bottom: 1px solid var(--border);
+      padding: 20px 0;
     }
 
     .topbar-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      padding: 16px 0;
-      flex-wrap: wrap;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
+      font-weight: 600;
+      font-size: 1rem;
     }
 
-    .brand-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 20px rgba(125,211,252,0.45);
-    }
-
-    .nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .nav a,
     .theme-toggle {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: var(--surface);
+      background: none;
       border: 1px solid var(--border);
       color: var(--muted);
-      font-weight: 600;
-      transition: 0.2s ease;
-    }
-
-    .nav a:hover,
-    .theme-toggle:hover {
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
-    .theme-toggle {
       cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: border-color 0.2s;
     }
 
+    .theme-toggle:hover { border-color: var(--text); color: var(--text); }
+
+    /* ── Hero ── */
     .hero {
-      padding: 52px 0 28px;
+      padding: 80px 0 60px;
     }
 
-    .hero-card {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 24px;
-      padding: 38px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
-    }
-
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--surface-strong);
-      border: 1px solid var(--border);
-      color: var(--accent);
-      font-size: 0.82rem;
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
       font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.6rem, 5vw, 4.8rem);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-    }
-
-    .gradient {
-      background: linear-gradient(135deg, var(--text), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
     }
 
     .hero p {
+      font-size: 1.05rem;
       color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 700px;
-      margin: 16px 0 0;
       line-height: 1.7;
+      max-width: 520px;
     }
 
-    .cta-row {
+    /* ── Nav links ── */
+    .nav-links {
+      margin-top: 56px;
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 24px;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--border);
     }
 
-    .btn {
-      display: inline-flex;
+    .nav-links a {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-weight: 700;
-      transition: 0.2s ease;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.15s;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      border: none;
-    }
+    .nav-links a:hover { color: var(--muted); }
 
-    .btn-secondary {
-      background: var(--surface-strong);
-      color: var(--text);
-    }
+    .nav-links .arrow { font-size: 1.1rem; }
 
-    .info-panel {
-      display: grid;
-      gap: 14px;
-    }
-
-    .panel-box {
-      padding: 18px;
-      border-radius: 20px;
-      background: var(--surface-strong);
-      border: 1px solid var(--border);
-    }
-
-    .panel-box .label {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 6px;
-    }
-
-    .panel-box strong {
-      display: block;
-      font-size: 1.1rem;
-      line-height: 1.4;
-    }
-
-    .section {
-      margin: 22px 0;
-    }
-
-    .section h2 {
-      margin: 0 0 10px;
-      font-size: 1.7rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section p.lead {
-      margin: 0 0 18px;
-      color: var(--muted);
-      max-width: 760px;
-      line-height: 1.7;
-    }
-
-    .grid-3,
-    .grid-2 {
-      display: grid;
-      gap: 16px;
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .card {
-      padding: 22px;
-      border-radius: 22px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.12rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .card-link {
-      display: inline-block;
-      margin-top: 16px;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
+    /* ── Footer ── */
     footer {
-      padding: 30px 0 60px;
+      padding: 48px 0;
       color: var(--muted);
-      text-align: center;
-    }
-
-    @media (max-width: 900px) {
-      .hero-card,
-      .grid-3,
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
+      font-size: 0.875rem;
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
+  <header>
     <div class="wrap topbar-inner">
-      <div class="brand">
-        <span class="brand-dot"></span>
-        <span>Arik Ben-Shabat</span>
-      </div>
-
-      <nav class="nav">
-        <a href="index.html">Hem</a>
-        <a href="projects.html">Projekt</a>
-        <a href="education.html">Utbildning</a>
-        <a href="courses.html">Kurser</a>
-        <a href="about.html">Om mig</a>
-        <button class="theme-toggle" id="themeToggle" type="button">Växla tema</button>
-      </nav>
+      <span class="brand">Arik Ben-Shabat</span>
+      <button class="theme-toggle" id="themeToggle" type="button">Växla tema</button>
     </div>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <div class="hero-card">
-        <div>
-          <div class="eyebrow">AI Systems · Automation · Optimization</div>
-          <h1><span class="gradient">Arik Ben-Shabat</span></h1>
-          <p>
-            Jag bygger intelligenta system för schemaläggning, dokumentautomation,
-            språkgranskning och produktivitet. Härifrån kan besökaren klicka sig vidare
-            till riktiga undersidor.
-          </p>
-
-          <div class="cta-row">
-            <a class="btn btn-primary" href="projects.html">Öppna projekt</a>
-            <a class="btn btn-secondary" href="education.html">Utbildning</a>
-            <a class="btn btn-secondary" href="courses.html">Kurser</a>
-            <a class="btn btn-secondary" href="about.html">Om mig</a>
-          </div>
-        </div>
-
-        <div class="info-panel">
-          <div class="panel-box">
-            <div class="label">Profil</div>
-            <strong>Teknisk portfolio med fokus på AI, optimering och verkliga arbetsflöden</strong>
-          </div>
-
-          <div class="panel-box">
-            <div class="label">Design</div>
-            <strong>Användaren kan växla mellan mörkt och ljusgrått tema</strong>
-          </div>
-
-          <div class="panel-box">
-            <div class="label">Struktur</div>
-            <strong>Riktiga sidor i stället för en enda lång sida</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Utforska</h2>
-      <p class="lead">
-        Här är fyra tydliga ingångar till sidan. Varje kort leder till en egen sida i din portfolio.
+      <h1>Arik Ben-Shabat</h1>
+      <p>
+        Civilingenjör och masterstudent med fokus på AI, optimering och automation.
+        Jag bygger intelligenta system som löser verkliga problem – från schemaläggning
+        och dokumentflöden till semantisk sökning och beslutsstöd.
       </p>
 
-      <div class="grid-2">
-        <article class="card">
-          <h3>Projekt</h3>
-          <p>Dina AI-, optimerings- och automationsprojekt samlade på en egen sida.</p>
-          <a class="card-link" href="projects.html">Gå till projekt →</a>
-        </article>
-
-        <article class="card">
-          <h3>Utbildning</h3>
-          <p>Hela din akademiska bakgrund med civilingenjörsutbildningar, masterstudier och kurslistor.</p>
-          <a class="card-link" href="education.html">Gå till utbildning →</a>
-        </article>
-
-        <article class="card">
-          <h3>Kurser</h3>
-          <p>En separat vy för kurser, fokusområden eller utvalda ämnen du vill lyfta fram extra.</p>
-          <a class="card-link" href="courses.html">Gå till kurser →</a>
-        </article>
-
-        <article class="card">
-          <h3>Om mig</h3>
-          <p>En ren introduktionssida om hur du jobbar, vad som driver dig och vad du bygger.</p>
-          <a class="card-link" href="about.html">Gå till om mig →</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Vad som blir nästa steg</h2>
-      <div class="grid-2">
-        <article class="card">
-          <h3>Riktiga GitHub-länkar</h3>
-          <p>Varje projektkort kan länka till repo, demo eller dokumentation när du är redo.</p>
-        </article>
-
-        <article class="card">
-          <h3>Fler sidor</h3>
-          <p>Vi kan enkelt lägga till CV, kontakt, publikationer eller en sida för research senare.</p>
-        </article>
-      </div>
+      <nav class="nav-links">
+        <a href="about.html">
+          <span>Om mig</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="projects.html">
+          <span>Projekt</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="education.html">
+          <span>Utbildning</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="courses.html">
+          <span>Kurser</span>
+          <span class="arrow">→</span>
+        </a>
+      </nav>
     </section>
   </main>
 
   <footer>
-    © 2026 Arik Ben-Shabat · Built with GitHub Pages
+    <div class="wrap">© 2026 Arik Ben-Shabat</div>
   </footer>
 
   <script>
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      document.body.classList.add('light');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
     }
 
     document.getElementById('themeToggle').addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      localStorage.setItem(
-        'theme',
-        document.body.classList.contains('light') ? 'light' : 'dark'
-      );
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
     });
   </script>
 </body>
